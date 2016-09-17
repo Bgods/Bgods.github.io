@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Bgods" />
+
+
+
+<meta name="description" content="在R语言的绘图函数中，如果文本参数是合法的R语言表达式，那么这个表达式就被用Tex类似的规则进行文本格式化。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R语言：表达式、数学公式、特殊符号">
+<meta property="og:url" content="http://bgods.top/2016/06/27/R语言：表达式、数学公式、特殊符号/index.html">
+<meta property="og:site_name" content="Bgods">
+<meta property="og:description" content="在R语言的绘图函数中，如果文本参数是合法的R语言表达式，那么这个表达式就被用Tex类似的规则进行文本格式化。">
+<meta property="og:image" content="http://img.blog.csdn.net/20151028223417872">
+<meta property="og:image" content="http://img.blog.csdn.net/20151029130139187">
+<meta property="og:image" content="http://img.blog.csdn.net/20151029095415911">
+<meta property="og:image" content="http://img.blog.csdn.net/20151029101039626">
+<meta property="og:image" content="http://img.blog.csdn.net/20151029101647891">
+<meta property="og:image" content="http://img.blog.csdn.net/20151029105049990">
+<meta property="og:image" content="http://img.blog.csdn.net/20151029103624683">
+<meta property="og:updated_time" content="2016-09-16T09:36:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="R语言：表达式、数学公式、特殊符号">
+<meta name="twitter:description" content="在R语言的绘图函数中，如果文本参数是合法的R语言表达式，那么这个表达式就被用Tex类似的规则进行文本格式化。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20151028223417872">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternative" href="/atom.xml" title="Bgods" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>R语言：表达式、数学公式、特殊符号 | Bgods</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?2314e6a0aaf1ed77c6964f3ae206a936";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Bgods</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">一切，仅源于兴趣</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:932794753@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/songzhilian22" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Bgods" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/songzhilian22" title="CSDN"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS/">CentOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jiebaR/">jiebaR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于R、Python</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Bgods</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Bgods</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">一切，仅源于兴趣</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:932794753@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/songzhilian22" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Bgods" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/songzhilian22" title="CSDN"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-R语言：表达式、数学公式、特殊符号" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/27/R语言：表达式、数学公式、特殊符号/" class="article-date">
+      <time datetime="2016-06-27T12:17:01.000Z" itemprop="datePublished">2016-06-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      R语言：表达式、数学公式、特殊符号
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>　　在R语言的绘图函数中，如果文本参数是合法的R语言表达式，那么这个表达式就被用Tex类似的规则进行文本格式化。</p>
+<a id="more"></a>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">y &lt;- <span class="keyword">function</span>(x)&#123;</span><br><span class="line">     (exp(-(x^<span class="number">2</span>)/<span class="number">2</span>))/sqrt(<span class="number">2</span>*pi)</span><br><span class="line">&#125;</span><br><span class="line">plot(y, -<span class="number">5</span>, <span class="number">5</span>, </span><br><span class="line">    main = expression(f(x) == frac(<span class="number">1</span>,sqrt(<span class="number">2</span>*pi))*e^(-frac(x^<span class="number">2</span>,<span class="number">2</span>))), </span><br><span class="line">    lwd = <span class="number">3</span>, </span><br><span class="line">    col = <span class="string">"blue"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20151028223417872" alt=""></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(ggplot2)</span><br><span class="line"></span><br><span class="line">x &lt;- seq(<span class="number">0</span>, <span class="number">2</span>*pi, by = <span class="number">0.01</span>)</span><br><span class="line">y &lt;- sin(x)</span><br><span class="line">data &lt;- data.frame(x, y)</span><br><span class="line">p &lt;- ggplot(data, aes(x, y)) +　geom_line()</span><br><span class="line">p + geom_area(fill = <span class="string">'blue'</span>, alpha = <span class="number">0.3</span>) +</span><br><span class="line">  scale_x_continuous(breaks = c(<span class="number">0</span>, pi, <span class="number">2</span>*pi), labels = c(<span class="string">'0'</span>, expression(pi), expression(<span class="number">2</span>*pi))) +</span><br><span class="line">  geom_text(parse = <span class="literal">T</span>, aes(x = pi/<span class="number">2</span>,y = <span class="number">0.3</span>, label = <span class="string">'integral(sin(x)*dx, 0, pi)'</span>))</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20151029130139187" alt=""></p>
+<hr>
+<h1 id="R语言的“表达式”"><a href="#R语言的“表达式”" class="headerlink" title="R语言的“表达式”"></a><strong>R语言的“表达式”</strong></h1><p>　　在R语言中，“表达式”的概念有狭义和广义两种意义。狭义的表达式指表达式(expression)类对象，由expression函数产生；而广义的的表达式既包含expression类，也包含R“语言”类(language)。expression和language是R语言中两种特殊数据类：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">getClass(<span class="string">"expression"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># lass "expression" [package "methods"]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># No Slots, prototype of class "expression"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Extends: "vector"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">getClass(<span class="string">"language"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#Virtual Class "language" [package "methods"]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># No Slots, prototype of class "name"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Known Subclasses: </span></span><br><span class="line"><span class="comment"># Class "name", directly</span></span><br><span class="line"><span class="comment"># Class "call", directly</span></span><br><span class="line"><span class="comment"># Class "&#123;", directly</span></span><br><span class="line"><span class="comment"># Class "if", directly</span></span><br><span class="line"><span class="comment"># Class "&lt;-", directly</span></span><br><span class="line"><span class="comment"># Class "for", directly</span></span><br><span class="line"><span class="comment"># Class "while", directly</span></span><br><span class="line"><span class="comment"># Class "repeat", directly</span></span><br><span class="line"><span class="comment"># Class "(", directly</span></span><br><span class="line"><span class="comment"># Class ".name", by class "name", distance 2, with explicit coerce</span></span><br></pre></td></tr></table></figure>
+<p>　　可以看到expression类由向量派生得到，而language类是虚拟类，它包括我们熟悉的程序控制关键词/符号和name、call 子类。</p>
+<hr>
+<h1 id="产生“表达式”的函数"><a href="#产生“表达式”的函数" class="headerlink" title="产生“表达式”的函数"></a><strong>产生“表达式”的函数</strong></h1><p>　　虽然我们在R终端键入的任何有效语句都是表达式，但这些表达式在输入后即被求值（evaluate）了，获得未经求值的纯粹“表达式”就要使用函数。下面我们从函数参数和返回值两方面了解expression、quote、bquote和substitute这几个常用函数。</p>
+<h2 id="expression-函数"><a href="#expression-函数" class="headerlink" title="expression 函数"></a><strong>expression 函数</strong></h2><p>　　expression函数可以有一个或多个参数，它把全部参数当成一个列表，每个参数都被转成一个表达式向量，所以它的返回值是表达式列表，每个元素都是表达式类型对象，返回值的长度等于参数的个数：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(ex &lt;- expression(x = <span class="number">1</span>, <span class="number">1</span> + sqrt(a)))</span><br><span class="line"><span class="comment">## expression(x = 1, 1 + sqrt(a))</span></span><br><span class="line">length(ex)</span><br><span class="line"><span class="comment">## [1] 2</span></span><br><span class="line">ex[<span class="number">1</span>]</span><br><span class="line"><span class="comment">## expression(x = 1)</span></span><br><span class="line">mode(ex[<span class="number">1</span>])</span><br><span class="line"><span class="comment">## [1] "expression"</span></span><br><span class="line">typeof(ex[<span class="number">1</span>])</span><br><span class="line"><span class="comment">## [1] "expression"</span></span><br><span class="line">ex[<span class="number">2</span>]</span><br><span class="line"><span class="comment">## expression(1 + sqrt(a))</span></span><br><span class="line">mode(ex[<span class="number">2</span>])</span><br><span class="line"><span class="comment">## [1] "expression"</span></span><br><span class="line">typeof(ex[<span class="number">2</span>])</span><br><span class="line"><span class="comment">## [1] "expression"</span></span><br></pre></td></tr></table></figure></p>
+<p>　　因为expression函数把参数当成列表处理，所以等号”=”两边的表达式要符合R语言列表元素的书写规则，否则出错，比如：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression(x+<span class="number">11</span>=<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="quote函数"><a href="#quote函数" class="headerlink" title="quote函数"></a><strong>quote函数</strong></h2><p>　　quote函数只能有一个参数。quote函数的返回值一般情况下是call类型，表达式参数是单个变量的话返回值就是name类型，如果是常量那么返回值的存储模式就和相应常量的模式相同：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">(cl &lt;- quote(<span class="number">1</span> + sqrt(a) + b^c))</span><br><span class="line"><span class="comment">## 1 + sqrt(a) + b^c</span></span><br><span class="line">mode(cl)</span><br><span class="line"><span class="comment">## [1] "call"</span></span><br><span class="line">typeof(cl)</span><br><span class="line"><span class="comment">## [1] "language"</span></span><br><span class="line">(cl &lt;- quote(a))</span><br><span class="line"><span class="comment">## a</span></span><br><span class="line">mode(cl)</span><br><span class="line"><span class="comment">## [1] "name"</span></span><br><span class="line">typeof(cl)</span><br><span class="line"><span class="comment">## [1] "symbol"</span></span><br><span class="line">(cl &lt;- quote(<span class="number">1</span>))</span><br><span class="line"><span class="comment">## [1] 1</span></span><br><span class="line">mode(cl)</span><br><span class="line"><span class="comment">## [1] "numeric"</span></span><br><span class="line">typeof(cl)</span><br><span class="line"><span class="comment">## [1] "double"</span></span><br></pre></td></tr></table></figure></p>
+<p>　　quote返回值如果是name或常量类型，它的长度就是1；如果是call类型，返回值长度就与函数/运算符的参数个数n对应，长度等于n+1，多出的长度1是函数/符号名。<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">length(quote(a))  <span class="comment">#name或常量类型，返回值长度为1</span></span><br><span class="line"><span class="comment">## [1] 1</span></span><br><span class="line">length(quote(!a))  <span class="comment">#单目运算符，返回值长度为2</span></span><br><span class="line"><span class="comment">## [1] 2</span></span><br><span class="line">length(quote(-b))  <span class="comment">#单目运算符，返回值长度为2</span></span><br><span class="line"><span class="comment">## [1] 2</span></span><br><span class="line">length(quote(a + b))  <span class="comment">#双目运算符，返回值长度为3</span></span><br><span class="line"><span class="comment">## [1] 3</span></span><br><span class="line">length(quote((a + b) * c))  <span class="comment">#多个运算符只算优先级最低的一个</span></span><br><span class="line"><span class="comment">## [1] 3</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="bquote-和-substitute-函数"><a href="#bquote-和-substitute-函数" class="headerlink" title="bquote 和 substitute 函数"></a><strong>bquote 和 substitute 函数</strong></h2><p>　　如果不使用环境变量或环境变量参数，bquote 和 substitute 函数得到的结果与quote函数相同。<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bquote(<span class="number">1</span> + sqrt(a) + b^c) == quote(<span class="number">1</span> + sqrt(a) + b^c)</span><br><span class="line"><span class="comment">## [1] TRUE</span></span><br><span class="line">substitute(<span class="number">1</span> + sqrt(a) + b^c) == quote(<span class="number">1</span> + sqrt(a) + b^c)</span><br><span class="line"><span class="comment">## [1] TRUE</span></span><br></pre></td></tr></table></figure></p>
+<p>　　但是bquote 和 substitute 函数可以在表达式中使用变量，变量的值随运行进程而被替换。bquote 和 substitute 函数变量替换的方式不一样，bquote函数中需要替换的变量用 .( ) 引用，substitute函数中需要替换的变量用列表参数方式给出。除了这一点，bquote 和 substitute 函数没有差别：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a &lt;- <span class="number">3</span></span><br><span class="line">b &lt;- <span class="number">2</span></span><br><span class="line">(bq &lt;- bquote(y == sqrt(.(a), .(b))))</span><br><span class="line"><span class="comment">## y == sqrt(3, 2) </span></span><br><span class="line">(ss &lt;- substitute(y == sqrt(a, b), list(a = <span class="number">3</span>, b = <span class="number">2</span>)))</span><br><span class="line"><span class="comment">## y == sqrt(3, 2) </span></span><br><span class="line">bq == ss</span><br><span class="line"><span class="comment">## [1] TRUE</span></span><br></pre></td></tr></table></figure></p>
+<p>　　搞出两个功能完全一样的函数不算很奇怪，R语言里面太多了，可能是照顾不同使用习惯的人们吧。bquote函数的帮助档说这个函数类似于LISP的backquote宏，对于像我这样的LISP盲，使用substitute函数好一些。 substitute函数的典型用途是替换表达式中的变量，如果我们希望在表达式中使用变量并且希望这些变量在运行过程中做出相应改变，就可以使用substitute函数。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">par(mar = rep(<span class="number">0.1</span>, <span class="number">4</span>), cex = <span class="number">2</span>)</span><br><span class="line">plot.new()</span><br><span class="line">plot.window(c(<span class="number">0</span>, <span class="number">10</span>), c(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>:<span class="number">9</span>) text(i, <span class="number">0.5</span>, substitute(sqrt(x, a), list(a = i + <span class="number">1</span>)))</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20151029095415911" alt=""></p>
+<h2 id="parse-函数"><a href="#parse-函数" class="headerlink" title="parse 函数"></a><strong>parse 函数</strong></h2><p>　　parse函数用于从文件读取文本作为表达式，返回的值是expression类型，这函数也很有用。后面有例子。<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x &lt;- <span class="number">1</span></span><br><span class="line">x + <span class="string">"x"</span></span><br><span class="line"><span class="comment">## Error: 二进列运算符中有非数值参数</span></span><br><span class="line">expression(x + <span class="string">"x"</span>)</span><br><span class="line"><span class="comment">## expression(x + "x")</span></span><br><span class="line">quote(x + <span class="string">"x"</span>)</span><br><span class="line"><span class="comment">## x + "x"</span></span><br></pre></td></tr></table></figure></p>
+<p>　　但R要检查表达式中的运算符，不符合运算符使用规则的表达式将出错：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">expression(x + +++y)</span><br><span class="line"><span class="comment">## expression(x + +++y) </span></span><br><span class="line"></span><br><span class="line">expression(x - ---y)</span><br><span class="line"><span class="comment">## expression(x - ---y) </span></span><br><span class="line"><span class="comment">## expression(x****y) (Not run) expression(x////y) (Not run) </span></span><br><span class="line"><span class="comment">## expression(1&lt;=x&lt;=4) (Not run) </span></span><br><span class="line"></span><br><span class="line">quote(x + +++y)</span><br><span class="line"><span class="comment">## x + +++y </span></span><br><span class="line"></span><br><span class="line">quote(x - ---y)</span><br><span class="line"><span class="comment">## x - ---y </span></span><br><span class="line"><span class="comment">## quote(x****y) (Not run) quote(x////y) (Not run) quote(1&lt;=x&lt;=4) (Not run)</span></span><br></pre></td></tr></table></figure></p>
+<p>　　+ - 运算连续使用不出错是因为它们还可以当成求正/负值运算的符号。 在表达式产生函数中使用paste函数可以解决这样的问题。在这种条件下，paste对参数的处理方式和表达式产生函数一样，检查运算符但不检查变量名。用NULL作为运算符的参数可以获得意外的效果：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ex &lt;- expression(paste(x, <span class="string">"////"</span>, y))</span><br><span class="line">cl &lt;- quote(paste(x, <span class="string">"****"</span>, y))</span><br><span class="line">par(mar = rep(<span class="number">0.1</span>, <span class="number">4</span>), cex = <span class="number">2</span>)</span><br><span class="line">plot.new()</span><br><span class="line">plot.window(c(<span class="number">0</span>, <span class="number">1.2</span>), c(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line">text(<span class="number">0.2</span>, <span class="number">0.5</span>, ex)</span><br><span class="line">text(<span class="number">0.6</span>, <span class="number">0.5</span>, cl)</span><br><span class="line">cl &lt;- quote(paste(<span class="number">1</span> &lt;= x, <span class="literal">NULL</span> &lt;= <span class="number">4</span>))</span><br><span class="line">text(<span class="number">1</span>, <span class="number">0.5</span>, cl)</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://img.blog.csdn.net/20151029101039626" alt=""></p>
+<hr>
+<h1 id="R绘图函数对文本参数中的表达式的处理"><a href="#R绘图函数对文本参数中的表达式的处理" class="headerlink" title="R绘图函数对文本参数中的表达式的处理"></a><strong>R绘图函数对文本参数中的表达式的处理</strong></h1><p>　　quote, bquote 和 substitute 的返回值有三种类型call, name 和 常量，事实上expression 函数的结果最终也是这三种类型。因为expression函数的结果是expression列表，我们取列表元素的值检查看看：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">(ex &lt;- expression(<span class="number">1</span> + sqrt(x), x, <span class="number">1</span>))</span><br><span class="line"><span class="comment">## expression(1 + sqrt(x), x, 1)</span></span><br><span class="line"></span><br><span class="line">ex[[<span class="number">1</span>]]</span><br><span class="line"><span class="comment">## 1 + sqrt(x)</span></span><br><span class="line"></span><br><span class="line">mode(ex[[<span class="number">1</span>]])</span><br><span class="line"><span class="comment">## [1] "call"</span></span><br><span class="line"></span><br><span class="line">typeof(ex[[<span class="number">1</span>]])</span><br><span class="line"><span class="comment">## [1] "language"</span></span><br><span class="line"></span><br><span class="line">ex[[<span class="number">2</span>]]</span><br><span class="line"><span class="comment">## x</span></span><br><span class="line"></span><br><span class="line">mode(ex[[<span class="number">2</span>]])</span><br><span class="line"><span class="comment">## [1] "name"</span></span><br><span class="line"></span><br><span class="line">typeof(ex[[<span class="number">2</span>]])</span><br><span class="line"><span class="comment">## [1] "symbol"</span></span><br><span class="line"></span><br><span class="line">ex[[<span class="number">3</span>]]</span><br><span class="line"><span class="comment">## [1] 1</span></span><br><span class="line"></span><br><span class="line">mode(ex[[<span class="number">3</span>]])</span><br><span class="line"><span class="comment">## [1] "numeric"</span></span><br><span class="line"></span><br><span class="line">typeof(ex[[<span class="number">3</span>]])</span><br><span class="line"><span class="comment">## [1] "double"</span></span><br></pre></td></tr></table></figure></p>
+<p>　　确实是这样。所以绘图函数对文本参数中的表达式处理就有三种情况。先看看处理结果：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">par(mar = rep(<span class="number">0.1</span>, <span class="number">4</span>), cex = <span class="number">2</span>)</span><br><span class="line">plot.new()</span><br><span class="line">plot.window(c(<span class="number">0</span>, <span class="number">1.2</span>), c(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line">text(<span class="number">0.2</span>, <span class="number">0.5</span>, ex[<span class="number">1</span>])</span><br><span class="line">text(<span class="number">0.6</span>, <span class="number">0.5</span>, ex[<span class="number">2</span>])</span><br><span class="line">text(<span class="number">1</span>, <span class="number">0.5</span>, ex[<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20151029101647891" alt=""></p>
+<p>　　name 和常量类型都很简单，直接输出文本，而call类型就不好判断了。我们前面说过call类型返回值的长度与函数/运算符的参数个数有关。这是怎么体现的呢？由于文本参数最终得到的是文本，我们用as.character函数来看看：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">as.character(quote(x - y))</span><br><span class="line"><span class="comment">## [1] "-" "x" "y"</span></span><br><span class="line"></span><br><span class="line">as.character(quote(<span class="number">1</span> - x + y))</span><br><span class="line"><span class="comment">## [1] "+"  "1 - x" "y"</span></span><br><span class="line"></span><br><span class="line">as.character(quote((<span class="number">1</span> + x) * y))</span><br><span class="line"><span class="comment">## [1] "*"  "(1 + x)" "y"</span></span><br><span class="line"></span><br><span class="line">as.character(quote(!a))</span><br><span class="line"><span class="comment">## [1] "!" "a"</span></span><br><span class="line"></span><br><span class="line">as.character(quote(sqrt(x)))</span><br><span class="line"><span class="comment">## [1] "sqrt" "x"</span></span><br></pre></td></tr></table></figure></p>
+<p>　　转换成字符串向量后排在第一位的是运算符或函数名称，后面是参数（如果参数中还有运算符或函数名，R还会对其进行解析）。运算符和函数是相同的处理方式。事实上，在R语言中，所有运算符（包括数学运算符和逻辑运算符）都是函数，你可以用函数的方式使用运算符：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> + <span class="number">4</span></span><br><span class="line"><span class="comment">## [1] 6</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> - <span class="number">4</span></span><br><span class="line"><span class="comment">## [1] -2</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> &lt;= <span class="number">4</span></span><br><span class="line"><span class="comment">## [1] TRUE</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> &gt;= <span class="number">4</span></span><br><span class="line"><span class="comment">## [1] FALSE</span></span><br></pre></td></tr></table></figure></p>
+<p>　　R绘图函数对表达式中包含的函数名和它们的参数首先应用Tex文本格式化规则进行处理，这种规则的具体情况可以使用 ?plotmath 进行查看，主要是一些数学公式和符号的表示方法。把这个说明文档中字符串拷贝到maths.txt文件中并保存到当前工作目录后可以用下面的代码做出后面的表格：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ex &lt;- parse(<span class="string">"maths.txt"</span>)</span><br><span class="line">labs &lt;- readLines(<span class="string">"maths.txt"</span>)</span><br><span class="line">n &lt;- length(ex)</span><br><span class="line">par(mar = rep(<span class="number">0.1</span>, <span class="number">4</span>), cex = <span class="number">0.8</span>)</span><br><span class="line">plot.new()</span><br><span class="line">plot.window(c(<span class="number">0</span>, <span class="number">8</span>), c(<span class="number">0</span>, n/<span class="number">4</span>))</span><br><span class="line">y &lt;- seq(n/<span class="number">4</span>, by = -<span class="number">1</span>, length = n/<span class="number">4</span>)</span><br><span class="line">x &lt;- seq(<span class="number">0.1</span>, by = <span class="number">2</span>, length = <span class="number">4</span>)</span><br><span class="line">xy &lt;- expand.grid(x, y)</span><br><span class="line">text(xy, labs, adj = c(<span class="number">0</span>, <span class="number">0.5</span>))</span><br><span class="line">xy &lt;- expand.grid(x + <span class="number">1.3</span>, y)</span><br><span class="line">text(xy, ex, adj = c(<span class="number">0</span>, <span class="number">0.5</span>), col = <span class="string">"blue"</span>)</span><br><span class="line">box(lwd = <span class="number">2</span>)</span><br><span class="line">abline(v = seq(<span class="number">1.3</span>, by = <span class="number">2</span>, length = <span class="number">4</span>), lty = <span class="number">3</span>)</span><br><span class="line">abline(v = seq(<span class="number">2</span>, by = <span class="number">2</span>, length = <span class="number">3</span>), lwd = <span class="number">1.5</span>)</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://img.blog.csdn.net/20151029105049990" alt=""></p>
+<p>　　表中奇数列是字符串（表达式），偶数列（蓝色）是Tex格式化的图形。除了上表列出的规则外还有一些拉丁文和希腊文符号，可以在表达式中用 symbol 函数或名称（如alpha）等表示，用到时自己去找吧。 如果函数名（包括运算符）有对应的Tex格式化规则，函数名和参数都按规则进行图形绘制；如果没有，就当成是R语言普通函数：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ex &lt;- expression(sqrt(x), x + y, x^<span class="number">2</span>, x %<span class="keyword">in</span>% A, x &lt;= y, mean(x, y, z), x | y, x &amp; y)</span><br><span class="line">n &lt;- length(ex)</span><br><span class="line">par(mar = rep(<span class="number">0.1</span>, <span class="number">4</span>), cex = <span class="number">1.5</span>)</span><br><span class="line">col &lt;- c(<span class="string">"red"</span>, <span class="string">"blue"</span>)</span><br><span class="line">plot.new()</span><br><span class="line">plot.window(c(<span class="number">0</span>, n), c(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>:n) text(i - <span class="number">0.5</span>, <span class="number">0.5</span>, ex[i], col = col[i%%<span class="number">2</span> + <span class="number">1</span>])</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://img.blog.csdn.net/20151029103624683" alt=""></p>
+<p>　　上面例子中前5种运算函数都是有对应数学符号的，所以它出的图（符号和顺序）与数学习惯一致，后三种运算函数没有对应数学符号，所以用普通函数方式（函数名在前，参数在括号内用逗号分隔）出图。其他还有一些琐碎的规则，自己找找吧。</p>
+<p>本文转自<a href="http://blog.sciencenet.cn/blog-253562-818554.html" target="_blank" rel="external"><font color="red" size="3" face="黑体">科学网李鹏程博客</font></a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/06/27/R语言：表达式、数学公式、特殊符号/">R语言：表达式、数学公式、特殊符号</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Bgods</a></p>
+        <p><span>发布时间:</span>2016-06-27, 20:17:01</p>
+        <p><span>最后更新:</span>2016-09-16, 17:36:49</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/06/27/R语言：表达式、数学公式、特殊符号/" title="R语言：表达式、数学公式、特殊符号">http://bgods.top/2016/06/27/R语言：表达式、数学公式、特殊符号/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://bgods.top/2016/06/27/R语言：表达式、数学公式、特殊符号/　　作者: Bgods" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/06/27/Python文件、目录操作/">
+                    Python文件、目录操作
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/06/27/jiebaR中文分词快速入门/">
+                    jiebaR中文分词快速入门
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#R语言的“表达式”"><span class="toc-number">1.</span> <span class="toc-text">R语言的“表达式”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#产生“表达式”的函数"><span class="toc-number">2.</span> <span class="toc-text">产生“表达式”的函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#expression-函数"><span class="toc-number">2.1.</span> <span class="toc-text">expression 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#quote函数"><span class="toc-number">2.2.</span> <span class="toc-text">quote函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bquote-和-substitute-函数"><span class="toc-number">2.3.</span> <span class="toc-text">bquote 和 substitute 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#parse-函数"><span class="toc-number">2.4.</span> <span class="toc-text">parse 函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#R绘图函数对文本参数中的表达式的处理"><span class="toc-number">3.</span> <span class="toc-text">R绘图函数对文本参数中的表达式的处理</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script>
+    yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+</script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"R语言：表达式、数学公式、特殊符号　| Bgods　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/06/27/R语言：表达式、数学公式、特殊符号/" data-title="R语言：表达式、数学公式、特殊符号" data-url="http://bgods.top/2016/06/27/R语言：表达式、数学公式、特殊符号/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"null"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=null&threads=2016/06/27/R语言：表达式、数学公式、特殊符号/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
+    </script>
+    
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/06/27/Python文件、目录操作/" title="上一篇: Python文件、目录操作">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/06/27/jiebaR中文分词快速入门/" title="下一篇: jiebaR中文分词快速入门">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/10/mysql学习笔记/">mysql学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/10/CentOS安装R语言/">CentOS安装R语言</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/29/scrapy框架/">scrapy框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/Python文件、目录操作/">Python文件、目录操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/R语言：表达式、数学公式、特殊符号/">R语言：表达式、数学公式、特殊符号</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/jiebaR中文分词快速入门/">jiebaR中文分词快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/jiebaR中文分词，并做词云（R语言）/">jiebaR中文分词，并做词云（R语言）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/JDK环境变量配置-linux/">JDK环境变量配置(linux)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/python使用cookie登陆新浪微博用户信息/">python使用cookie登陆新浪微博用户信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/python模拟新浪微博登陆之获取cookies/">python模拟新浪微博登陆之获取cookies</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/About-Blog/">About Blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/ssh无密码登陆/">ssh无密码登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/centos-mysql-安装及配置/">centos mysql 安装及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/60-个实用的-R-语言技巧（转载）/">60 个实用的 R 语言技巧（转载）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/初识Scrapy-实战（一）/">初识Scrapy-实战（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/CSS笔记/">CSS笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/爬取淘宝MM图片/">爬取淘宝MM图片</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2015-2016 Bgods
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+    <script src="/js/GithubRepoWidget.js"></script>
+
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

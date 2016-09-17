@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Bgods" />
+
+
+
+<meta name="description" content="本文内容来源于 Rstatistics.net 的 60 R Tips，这些都是作者们长期使用 R 积累下来的一些技巧或者建议。我觉得这个内容挺好的，并且在书上看不到这些内容，所以做了搬运和翻译，重点是加了例子，否则如果只看文字可能搞不懂状况。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="60 个实用的 R 语言技巧（转载）">
+<meta property="og:url" content="http://bgods.top/2016/06/27/60-个实用的-R-语言技巧（转载）/index.html">
+<meta property="og:site_name" content="Bgods">
+<meta property="og:description" content="本文内容来源于 Rstatistics.net 的 60 R Tips，这些都是作者们长期使用 R 积累下来的一些技巧或者建议。我觉得这个内容挺好的，并且在书上看不到这些内容，所以做了搬运和翻译，重点是加了例子，否则如果只看文字可能搞不懂状况。">
+<meta property="og:updated_time" content="2016-09-16T14:46:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="60 个实用的 R 语言技巧（转载）">
+<meta name="twitter:description" content="本文内容来源于 Rstatistics.net 的 60 R Tips，这些都是作者们长期使用 R 积累下来的一些技巧或者建议。我觉得这个内容挺好的，并且在书上看不到这些内容，所以做了搬运和翻译，重点是加了例子，否则如果只看文字可能搞不懂状况。">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternative" href="/atom.xml" title="Bgods" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>60 个实用的 R 语言技巧（转载） | Bgods</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?2314e6a0aaf1ed77c6964f3ae206a936";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Bgods</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">一切，仅源于兴趣</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:932794753@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/songzhilian22" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Bgods" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/songzhilian22" title="CSDN"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS/">CentOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jiebaR/">jiebaR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于R、Python</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Bgods</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Bgods</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">一切，仅源于兴趣</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:932794753@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/songzhilian22" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Bgods" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/songzhilian22" title="CSDN"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-60-个实用的-R-语言技巧（转载）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/27/60-个实用的-R-语言技巧（转载）/" class="article-date">
+      <time datetime="2016-06-27T10:15:35.000Z" itemprop="datePublished">2016-06-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      60 个实用的 R 语言技巧（转载）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>　　本文内容来源于 Rstatistics.net 的 60 R Tips，这些都是作者们长期使用 R 积累下来的一些技巧或者建议。我觉得这个内容挺好的，并且在书上看不到这些内容，所以做了搬运和翻译，重点是加了例子，否则如果只看文字可能搞不懂状况。</p>
+<a id="more"></a>
+<p><font color="red" size="4"><strong>本文转载自：</strong></font> 60 个实用的 R 语言技巧 | EthanDeng +<a href="http://ddswhu.com/2015/09/07/60-r-tips/" target="_blank" rel="external">http://ddswhu.com/2015/09/07/60-r-tips/</a></p>
+<p>转载请注明以上的原文地址。</p>
+<hr>
+<p>  本文内容来源于 Rstatistics.net 的 60 R Tips，这些都是作者们长期使用 R 积累下来的一些技巧或者建议。我觉得这个内容挺好的，并且在书上看不到这些内容，所以做了搬运和翻译，重点是加了例子，否则如果只看文字可能搞不懂状况。</p>
+<ol>
+<li><p>在将 factor 类型的变量转为数值变量的时候切记不要使用 as.numeric()，正确的方式是 as.numeric(as.character(myFactorVar))。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cha2fac &lt;- as.factor(c(<span class="string">"4"</span>,<span class="string">"8"</span>,<span class="string">"10"</span>,<span class="string">"15"</span>))</span><br><span class="line">as.numeric(cha2fac)</span><br><span class="line">as.numeric(as.character(cha2fac))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用选项 options(show.error.messages = F) 可以关闭错误信息提示。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class(x) <span class="comment"># error msg: Error: object 'x' not found</span></span><br><span class="line">options(show.error.messages = <span class="literal">F</span>)</span><br><span class="line">class(x)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 file.path() 创建（使用）文件路径，这可以保证在不同系统下都适用。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setwd(file.path(<span class="string">"F:"</span>, <span class="string">"git"</span>, <span class="string">"roxygen2"</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在对字符串排序的时候，如果需要对数字也能排序，可以使用 gtools 包中的 mixedsort()，效果与 sort() 不一样。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Treatment &lt;- c(<span class="string">"Control"</span>, <span class="string">"Asprin 10mg/day"</span>, <span class="string">"Asprin 50mg/day"</span>, <span class="string">"Asprin 100mg/day"</span>, <span class="string">"Acetomycin 100mg/day"</span>, <span class="string">"Acetomycin 1000mg/day"</span>)</span><br><span class="line">sort(Treatment)</span><br><span class="line"><span class="keyword">require</span>(gtools)</span><br><span class="line">mixedsort(Treatment)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在绘图的时候使用 ylim = range(myNumericData) + 10 可以调整 Y 轴绘图范围，可以使用倍数或者区间值。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x &lt;- seq(<span class="number">1</span>:<span class="number">10</span>)</span><br><span class="line">set.seed(<span class="number">1101</span>)</span><br><span class="line">y &lt;- <span class="number">10</span>*rnorm(<span class="number">10</span>)</span><br><span class="line">plot(x, y)</span><br><span class="line">plot(x, y, ylim = <span class="number">1.25</span>*range(y))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 plot() 绘图时，可以使用 las 参数调整坐标轴标签（数字）的显示方向，las 取值 {0，1，2，3}，对应的对齐方式为 {平行于轴（默认），水平（这个不错），垂直于轴，垂直}。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plot(x, y, las = <span class="number">1</span>)</span><br><span class="line">plot(x, y, las = <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Use memory.limit(size=2500) 限制 R 占用内存。</p>
+</li>
+<li><p>alarm() 函数可以添加到我们函数、过程的末尾，用以提示工作完成进度。（注意：RStudio 中无效）</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>:<span class="number">5</span>) &#123;</span><br><span class="line">Sys.sleep(<span class="number">1</span>)</span><br><span class="line">alarm()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>eval(parse(text=paste(“a &lt;- 10”))) 会创建向量 a 并赋值为 10。这个命令可以将字符串作为 R 命令执行。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eval(parse(text=paste(<span class="string">"a &lt;- 10"</span>)))</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sessionInfo() 可以获取 R 的版本、环境信息，以及加载的包的信息。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionInfo()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>计算从 word1 到 word2 所需要的变化可以使用 adist(word1, word2).</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adist(<span class="string">"hello world"</span>,<span class="string">"hello wordx"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用选项 options(max.print=1000000) 可以增加控制台的信息显示的行数。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">options(max.print=<span class="number">1000000</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 cmd 运行 R 代码：”C:\your-R-path\R.exe” CMD BATCH –vanilla –slave</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"c:\project-path\my_script.R"</span> <span class="comment">#（可以用这个写自动运行的脚本，比如批处理。）</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果有多个 R 会话，每个 R 的唯一 id 可以用 Sys.getpid() 获取。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sys.getpid()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以使用 unname() 去除 R 对象的名称属性。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y &lt;- quantile(mtcars$mpg)</span><br><span class="line">unname(y)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检验两个对象（x 和 y）是否一致使用 identical(x, y)，使用 all.equal 会比较各种属性是否一致。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x &lt;- c(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">y &lt;- as.vector(x)</span><br><span class="line">identical(x, y)</span><br><span class="line">all.equal(x, y)</span><br><span class="line">y2 &lt;- c(y, <span class="number">3</span>)</span><br><span class="line">all.equal(x, y2)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 R 获取 Twitter 推文（用于文本分析）。<a href="http://rstatistics.net/extracting-tweets-with-r/" target="_blank" rel="external">http://rstatistics.net/extracting-tweets-with-r/</a></p>
+</li>
+<li>关于时间序列分析简短的介绍：<a href="http://rstatistics.net/time-series-analysis/" target="_blank" rel="external">http://rstatistics.net/time-series-analysis/</a></li>
+<li>当某个步骤运行的时间太长（超过预先设定的时间），可以使用 R.utils 包中的 withTimeout() 打断，然后跳到下一个步骤继续运行。</li>
+<li><p>可以使用 dist() 计算矩阵行与行之间的距离（默认是欧氏距离）。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x &lt;- matrix(seq(<span class="number">1</span>:<span class="number">20</span>), ncol = <span class="number">4</span>, byrow = <span class="literal">FALSE</span>)</span><br><span class="line">dist(x, method = <span class="string">"euclidean"</span>, upper = <span class="literal">TRUE</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>计算向量的（多重）差分可以使用 diff()</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x &lt;- c(seq(<span class="number">1</span>:<span class="number">5</span>), seq(from = <span class="number">1</span>, to = <span class="number">9</span>, by = <span class="number">2</span>))</span><br><span class="line">diff(x, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选项 options(scipen=999) 可以关闭数字科学记数法显示。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1e-5</span></span><br><span class="line">options(scipen=<span class="number">999</span>)</span><br><span class="line"><span class="number">1e-5</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>earth 包中的 bagEarth() 可以用来做 Bagged MARS (多元适应性回归平滑)</p>
+</li>
+<li>可以使用 setClass(‘myClass’) 定义一个类型 myClass，setAs() 可以做进一步的自定义。</li>
+<li><p>创建大量的变量可以使用 assign (“varName”, 10)，原因在于，我们可以向 varName 传递变量名（比如用循环），方便编程。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assign(<span class="string">"x"</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dim(matrix) 返回的是矩阵的行数与列数。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my.Matrix &lt;- matrix(<span class="number">1</span>:<span class="number">20</span>, ncol = <span class="number">4</span>)</span><br><span class="line">dim(my.Matrix)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>两个编写函数的技巧：1. 使用 … 传递已有函数的参数。2. 使用 invisible 隐藏输出。<br>视频参看：<a href="https://www.youtube.com/watch?v=ahRHTXNjixU" target="_blank" rel="external">https://www.youtube.com/watch?v=ahRHTXNjixU</a></p>
+</li>
+<li>使用 data.matrix() 可以将一个数据框转为数值矩阵，并且因子类型也会得到正确的转化。</li>
+<li>invisible(..) 可以不显示输出，在定义函数的时候经常使用到。</li>
+<li><p>cat(“\014”) 能清空 R 会话中的内容（类似于 CTRL + L 清屏，还是蛮有用的）。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat(<span class="string">"\014"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dir(“folder.path”) 会显示文件夹内的内容，类似于 cmd。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dir()</span><br><span class="line">dir(<span class="string">"subfolder.path"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在一个因子变量中如果存在缺失值，建议将缺失值做成一个因子等级 UNKNOWN，可以使用 levels(Var) &lt;-c(levels(Var), “UNKNOWN”) 来实现。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">my.Factor &lt;- as.factor(c(<span class="string">"First"</span>, <span class="string">"Second"</span>, <span class="string">"Third"</span>, <span class="literal">NA</span>))</span><br><span class="line">levels(my.Factor) &lt;-c(levels(my.Factor), <span class="string">"UNKNOWN"</span>)</span><br><span class="line">my.Factor</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化所有加载的包可以使用 lapply(x, require, character.only = T)，其中 x 为包的名称。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lapply(c(<span class="string">"dplyr"</span>, <span class="string">"tidyr"</span>), <span class="keyword">require</span>, character.only = <span class="literal">T</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>rev() 函数可以将一个向量翻转过来。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x &lt;- seq(<span class="number">1</span>:<span class="number">10</span>, )</span><br><span class="line">rev(x)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>complete.cases() 顾名思义，它的作用是得到完整观测（不含缺失）的索引，用于数据框缺失值的行删除。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nrow(mtcars)mtcars$mpg[mtcars$disp &gt; <span class="number">200</span>] &lt;- <span class="literal">NA</span></span><br><span class="line">mtcars</span><br><span class="line">mtcars2 &lt;- mtcars[complete.cases(mtcars), ]</span><br><span class="line">mtcars2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>nnet 包中的 avNNet() 可以用来做 Averaged 神经网络模型。</p>
+</li>
+<li><p>file.remove(‘filepath’) 可以用来删除文件夹中的文件，如果我们要删除重复性的中间文件，可以用它来实现。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file.create(<span class="string">"tempfile.R"</span>)</span><br><span class="line">file.remove(<span class="string">"tempfile.R"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ada 包中的 ada() 函数可以用来做 Boosted 分类树问题。</p>
+</li>
+<li><p>unclass() 可以将 lm 对象拆散成列表（list），方便我们获取未被显示的元素。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mod &lt;- lm(wt ~ disp + cyl, data = mtcars)</span><br><span class="line">unclass(mod)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据数据框（df）的两列进行排序可以使用 df[order(df$col1, df$col2), ]</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mtcars</span><br><span class="line">mtcars[order(mtcars$carb, mtcars$hp), ]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将一个 N 阶因子变量转为 N 个 0-1 变量最简单的方式是 model.matrix(~as.factor(Data)+0)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.matrix(~as.factor(mtcars$carb)+<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对一个时间序列去季节趋势可以使用 seaadj()：<a href="http://goo.gl/Oio7s2" target="_blank" rel="external">http://goo.gl/Oio7s2</a>.</p>
+</li>
+<li>在一个函数内对函数外的变量的赋值使用 &lt;&lt;-，而不要用 &lt;-。</li>
+<li>在 Windows 中，使用 memory.limit(size=desired-size) 可以限制 R 使用内存的大小，其他操作系统，使用 mem.limits()。</li>
+<li>使用 file.copy(from=fromFile, to = toFile, overwrite = TRUE) 可以实现文件的复制。</li>
+<li>debugonce() 可以调试一次代码，它与 debug() 的区别是无需使用 undebug() 跳出调试。</li>
+<li>在 R 中，将一个因子类型的变量（factor）转化为一组 0/1 虚拟变量可以使用 bins &lt;- model.matrix(~ 0 + varName, data)，在回归的时候经常会用到这个。（同 42）</li>
+<li>arules 包中的 discretize() 函数可以很方便的将一个连续变量转为分类变量（categorical）。</li>
+<li>NROW() 类似于 nrow()，不过前者对向量也适用，相比 length() 更具有鲁棒性。</li>
+<li>在 R 里面输入 commandArgs()，将会返回使用 cmd 运行 R 脚本所需要传递的参数。</li>
+<li>在函数内使用 attr(myFunc, “AttrName”) &lt;- myVal，在我们下次调用 myFunc 的时候将会记住 AttrName 这个属性。</li>
+<li>object.size() 可以得到给定 R 对象所消耗的内存。</li>
+<li>当我们处理比较大的 R 项目的时候，可以使用 ls.str() 查看这些 R 对象的结构信息。</li>
+<li>dir(path=’dir_path’) 将会列出 dir_path 下的所有文件及文件夹。</li>
+<li><p>library(help = libname) 会显示 libname 这个包的所有函数以及所带的数据集。（前提是必须安装了这个包）</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">install.packages(<span class="string">"AER"</span>)</span><br><span class="line"><span class="keyword">library</span>(help = AER)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>get(“objectNameString”) 会获取对象名称为 objectNameString 的对象。如果这个对象在一个特定的环境中，使用 envir 参数。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x &lt;- c(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">get(<span class="string">"x"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以使用 cor.test(x,y) 计算 x 与 y 的相关性。</p>
+</li>
+<li>如果你要做交互式的数据展示，Shiny 是一个很好的选择，这里是 Shiny 的一张备忘单。<a href="http://bit.ly/1pFWGJW" target="_blank" rel="external">http://bit.ly/1pFWGJW</a></li>
+</ol>
+<p><font color="red"><strong>本文转载自：</strong></font> <a href="http://ddswhu.com/2015/09/07/60-r-tips/" target="_blank" rel="external">60 个实用的 R 语言技巧</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/06/27/60-个实用的-R-语言技巧（转载）/">60 个实用的 R 语言技巧（转载）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Bgods</a></p>
+        <p><span>发布时间:</span>2016-06-27, 18:15:35</p>
+        <p><span>最后更新:</span>2016-09-16, 22:46:03</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/06/27/60-个实用的-R-语言技巧（转载）/" title="60 个实用的 R 语言技巧（转载）">http://bgods.top/2016/06/27/60-个实用的-R-语言技巧（转载）/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://bgods.top/2016/06/27/60-个实用的-R-语言技巧（转载）/　　作者: Bgods" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/06/27/centos-mysql-安装及配置/">
+                    centos mysql 安装及配置
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/06/27/初识Scrapy-实战（一）/">
+                    初识Scrapy-实战（一）
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script>
+    yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+</script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"60 个实用的 R 语言技巧（转载）　| Bgods　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/06/27/60-个实用的-R-语言技巧（转载）/" data-title="60 个实用的 R 语言技巧（转载）" data-url="http://bgods.top/2016/06/27/60-个实用的-R-语言技巧（转载）/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"null"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+            // Add comment count
+            $(function(){ 
+                var jsonUrl = "http://api.duoshuo.com/threads/counts.jsonp?short_name=null&threads=2016/06/27/60-个实用的-R-语言技巧（转载）/&callback=?";
+                $.getJSON(jsonUrl, function(result){
+                    $.each(result.response, function(i, field){
+                        var value = field.comments;
+                        if (value > 0) {
+                            $(".count-comment").text(value);
+                            return;
+                        }
+                    })
+                })
+            })
+        
+    </script>
+    
+    <aside class="comment-bar">
+        <a href="javascript:void(0);">
+            <i class="fa fa-commenting-o animated infinite pulse"></i>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span class="count-comment"></span>
+        </a>
+    </aside>
+    <script>
+        var $commentBar = $("#comments aside.comment-bar");
+        var load$hide = function(){
+            $commentBar.find("a > i").toggle();
+            loadComment();
+            $commentBar.fadeOut(800);
+        }
+        $commentBar.click(function(){
+            load$hide();
+        })
+        $commentBar.children("a").hover(function(){
+            load$hide();
+        })
+        if (window.location.hash === "#comments") {
+            load$hide();
+        }
+    </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/06/27/centos-mysql-安装及配置/" title="上一篇: centos mysql 安装及配置">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/06/27/初识Scrapy-实战（一）/" title="下一篇: 初识Scrapy-实战（一）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/10/mysql学习笔记/">mysql学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/10/CentOS安装R语言/">CentOS安装R语言</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/29/scrapy框架/">scrapy框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/Python文件、目录操作/">Python文件、目录操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/R语言：表达式、数学公式、特殊符号/">R语言：表达式、数学公式、特殊符号</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/jiebaR中文分词快速入门/">jiebaR中文分词快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/jiebaR中文分词，并做词云（R语言）/">jiebaR中文分词，并做词云（R语言）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/JDK环境变量配置-linux/">JDK环境变量配置(linux)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/python使用cookie登陆新浪微博用户信息/">python使用cookie登陆新浪微博用户信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/python模拟新浪微博登陆之获取cookies/">python模拟新浪微博登陆之获取cookies</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/About-Blog/">About Blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/ssh无密码登陆/">ssh无密码登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/centos-mysql-安装及配置/">centos mysql 安装及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/60-个实用的-R-语言技巧（转载）/">60 个实用的 R 语言技巧（转载）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/初识Scrapy-实战（一）/">初识Scrapy-实战（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/CSS笔记/">CSS笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/爬取淘宝MM图片/">爬取淘宝MM图片</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2015-2016 Bgods
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+    <script src="/js/GithubRepoWidget.js"></script>
+
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

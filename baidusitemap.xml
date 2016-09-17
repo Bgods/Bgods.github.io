@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/27/60-%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84-R-%E8%AF%AD%E8%A8%80%E6%8A%80%E5%B7%A7%EF%BC%88%E8%BD%AC%E8%BD%BD%EF%BC%89/</loc>
+    <lastmod>2016-09-16T14:46:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>60 个实用的 R 语言技巧（转载）</title>
+        <pubTime>2016-06-27T10:15:35.000Z</pubTime>
+        
+        <tag>R </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/27/CSS%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2016-09-16T13:55:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>CSS笔记</title>
+        <pubTime>2016-06-27T00:50:37.000Z</pubTime>
+        
+        <tag>CSS </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2015/06/27/%E7%88%AC%E5%8F%96%E6%B7%98%E5%AE%9DMM%E5%9B%BE%E7%89%87/</loc>
+    <lastmod>2016-09-16T13:34:24.000Z</lastmod>
+    <data>
+        <display>
+        <title>爬取淘宝MM图片</title>
+        <pubTime>2015-06-27T11:37:32.000Z</pubTime>
+        
+        <tag>python </tag>
+         
+        <tag>爬虫 </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/27/%E5%88%9D%E8%AF%86Scrapy-%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
+    <lastmod>2016-09-16T13:31:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>初识Scrapy-实战（一）</title>
+        <pubTime>2016-06-27T10:07:24.000Z</pubTime>
+        
+        <tag>python </tag>
+         
+        <tag>爬虫 </tag>
+         
+        <tag>scrapy </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/27/python%E6%A8%A1%E6%8B%9F%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E7%99%BB%E9%99%86%E4%B9%8B%E8%8E%B7%E5%8F%96cookies/</loc>
+    <lastmod>2016-09-16T13:05:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>python模拟新浪微博登陆之获取cookies</title>
+        <pubTime>2016-06-27T11:19:28.000Z</pubTime>
+        
+        <tag>python </tag>
+         
+        <tag>爬虫 </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/27/centos-mysql-%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2016-09-16T13:04:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>centos mysql 安装及配置</title>
+        <pubTime>2016-06-27T10:17:07.000Z</pubTime>
+        
+        <tag>mysql </tag>
+         
+        <tag>centos </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/27/ssh%E6%97%A0%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86/</loc>
+    <lastmod>2016-09-16T12:25:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>ssh无密码登陆</title>
+        <pubTime>2016-06-27T10:17:13.000Z</pubTime>
+        
+        <tag>ssh </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/27/About-Blog/</loc>
+    <lastmod>2016-09-16T11:59:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>About Blog</title>
+        <pubTime>2016-06-27T10:18:44.000Z</pubTime>
+        
+        <tag>hexo </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/27/python%E4%BD%BF%E7%94%A8cookie%E7%99%BB%E9%99%86%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF/</loc>
+    <lastmod>2016-09-16T11:35:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>python使用cookie登陆新浪微博用户信息</title>
+        <pubTime>2016-06-27T11:28:02.000Z</pubTime>
+        
+        <tag>python </tag>
+         
+        <tag>爬虫 </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/27/JDK%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE-linux/</loc>
+    <lastmod>2016-09-16T10:26:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>JDK环境变量配置(linux)</title>
+        <pubTime>2016-06-27T11:41:30.000Z</pubTime>
+        
+        <tag>jdk </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/27/jiebaR%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%EF%BC%8C%E5%B9%B6%E5%81%9A%E8%AF%8D%E4%BA%91%EF%BC%88R%E8%AF%AD%E8%A8%80%EF%BC%89/</loc>
+    <lastmod>2016-09-16T10:17:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>jiebaR中文分词，并做词云（R语言）</title>
+        <pubTime>2016-06-27T11:55:40.000Z</pubTime>
+        
+        <tag>R </tag>
+         
+        <tag>jiebaR </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/27/jiebaR%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</loc>
+    <lastmod>2016-09-16T10:07:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>jiebaR中文分词快速入门</title>
+        <pubTime>2016-06-27T11:58:57.000Z</pubTime>
+        
+        <tag>R </tag>
+         
+        <tag>jiebaR </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/27/R%E8%AF%AD%E8%A8%80%EF%BC%9A%E8%A1%A8%E8%BE%BE%E5%BC%8F%E3%80%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E3%80%81%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/</loc>
+    <lastmod>2016-09-16T09:36:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>R语言：表达式、数学公式、特殊符号</title>
+        <pubTime>2016-06-27T12:17:01.000Z</pubTime>
+        
+        <tag>R </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/27/Python%E6%96%87%E4%BB%B6%E3%80%81%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2016-09-16T08:35:17.000Z</lastmod>
+    <data>
+        <display>
+        <title>Python文件、目录操作</title>
+        <pubTime>2016-06-27T15:21:32.000Z</pubTime>
+        
+        <tag>python </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/06/29/scrapy%E6%A1%86%E6%9E%B6/</loc>
+    <lastmod>2016-09-16T08:08:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>scrapy框架</title>
+        <pubTime>2016-06-29T10:46:49.000Z</pubTime>
+        
+        <tag>python </tag>
+         
+        <tag>爬虫 </tag>
+         
+        <tag>scrapy </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/07/10/CentOS%E5%AE%89%E8%A3%85R%E8%AF%AD%E8%A8%80/</loc>
+    <lastmod>2016-09-16T08:03:46.000Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS安装R语言</title>
+        <pubTime>2016-07-09T16:27:24.000Z</pubTime>
+        
+        <tag>R </tag>
+         
+        <tag>CentOS </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/2016/07/10/mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2016-09-16T07:23:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>mysql学习笔记</title>
+        <pubTime>2016-07-09T17:57:45.000Z</pubTime>
+        
+        <tag>mysql </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bgods.top/README.html</loc>
+    <lastmod>2016-09-08T12:48:38.000Z</lastmod>
+    <data>
+        <display>
+        <title>about hexo</title>
+        <pubTime>2016-05-19T16:00:00.000Z</pubTime>
+        
+         
+        </display>
+    </data>
+    </url>
+
+    
+    
+</urlset>
