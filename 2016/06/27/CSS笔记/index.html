@@ -482,7 +482,7 @@ CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
         var duoshuoQuery = {short_name:"null"};
         var loadComment = function(){
             var d = document, s = d.createElement('script');
-            s.src = 'Bgods.github.io/js/embed.js';
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
             s.async = true; s.charset = 'UTF-8';
             (d.head || d.body).appendChild(s);
         }
