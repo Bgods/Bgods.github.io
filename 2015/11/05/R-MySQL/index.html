@@ -15,30 +15,22 @@
 
 
 
-<meta name="description" content="CSS 规则:
-由选择器和声明（一条或多条）组成;
-选择器通常是您需要改变样式的 HTML 元素;
-每条声明由一个属性和一个值组成;
-CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
+<meta name="description" content="实验环境：win8.1-64操作系统，MySQL5.6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS笔记">
-<meta property="og:url" content="http://bgods.top/2016/06/27/CSS笔记/index.html">
+<meta property="og:title" content="R语言连接MySQL">
+<meta property="og:url" content="http://bgods.top/2015/11/05/R-MySQL/index.html">
 <meta property="og:site_name" content="Bgods">
-<meta property="og:description" content="CSS 规则:
-由选择器和声明（一条或多条）组成;
-选择器通常是您需要改变样式的 HTML 元素;
-每条声明由一个属性和一个值组成;
-CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
-<meta property="og:image" content="http://bgods.top/img/bgods001.jpg">
-<meta property="og:updated_time" content="2016-09-16T13:55:49.000Z">
+<meta property="og:description" content="实验环境：win8.1-64操作系统，MySQL5.6">
+<meta property="og:image" content="http://img.blog.csdn.net/20151105105141513">
+<meta property="og:image" content="http://img.blog.csdn.net/20151105110304346">
+<meta property="og:image" content="http://img.blog.csdn.net/20151105114456338">
+<meta property="og:image" content="http://img.blog.csdn.net/20151105114906232">
+<meta property="og:image" content="http://img.blog.csdn.net/20151105115415458">
+<meta property="og:updated_time" content="2016-10-09T01:10:44.157Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS笔记">
-<meta name="twitter:description" content="CSS 规则:
-由选择器和声明（一条或多条）组成;
-选择器通常是您需要改变样式的 HTML 元素;
-每条声明由一个属性和一个值组成;
-CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
-<meta name="twitter:image" content="http://bgods.top/img/bgods001.jpg">
+<meta name="twitter:title" content="R语言连接MySQL">
+<meta name="twitter:description" content="实验环境：win8.1-64操作系统，MySQL5.6">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20151105105141513">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -70,7 +62,7 @@ CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>CSS笔记 | Bgods</title>
+<title>R语言连接MySQL | Bgods</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -300,11 +292,11 @@ CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-CSS笔记" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-R-MySQL" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/27/CSS笔记/" class="article-date">
-      <time datetime="2016-06-27T00:50:37.000Z" itemprop="datePublished">2016-06-27</time>
+      <a href="/2015/11/05/R-MySQL/" class="article-date">
+      <time datetime="2015-11-04T16:00:00.000Z" itemprop="datePublished">2015-11-05</time>
 </a>
     </div>
   
@@ -317,7 +309,7 @@ CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
         
   
     <h1 class="article-title" itemprop="name">
-      CSS笔记
+      R语言连接MySQL
     </h1>
   
 
@@ -328,7 +320,7 @@ CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -338,52 +330,66 @@ CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="CSS-规则"><a href="#CSS-规则" class="headerlink" title="CSS 规则:"></a><strong>CSS 规则:</strong></h1><ol>
-<li>由选择器和声明（一条或多条）组成;</li>
-<li>选择器通常是您需要改变样式的 HTML 元素;</li>
-<li>每条声明由一个属性和一个值组成;</li>
-<li>CSS声明总是以分号(;)结束，声明组以大括号({})括起来.</li>
-</ol>
+        <p>实验环境：win8.1-64操作系统，MySQL5.6</p>
 <a id="more"></a>
-<p><img src="/img/bgods001.jpg" alt=""><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>1、下载驱动文件</strong><br>     下载地址：<a href="http://dev.mysql.com/downloads/connector/odbc" target="_blank" rel="external">http://dev.mysql.com/downloads/connector/odbc</a><br><img src="http://img.blog.csdn.net/20151105105141513" alt=""></p>
 <hr>
-<h1 id="CSS-注释"><a href="#CSS-注释" class="headerlink" title="CSS 注释:"></a><strong>CSS 注释:</strong></h1><ul>
-<li>CSS注释以 “/*“开始, 以”*/“结束。</li>
-</ul>
+<p><strong>2、安装mysql-connector-odbc-5.3.4-winx64.msi（安装按照默认就好了）</strong></p>
 <hr>
-<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a><strong>选择器</strong></h1><ol>
-<li><p><strong>标签选择器：</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">标签名 &#123;</span><br><span class="line">	声明1;</span><br><span class="line">	声明2;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>id、class属性选择器：</strong></p>
+<p><strong>3、配置datasource</strong></p>
+<p>windows：控制面板$\Rightarrow$管理工具$\Rightarrow$ODBC 数据源(64 位)$\Rightarrow$添加$\Rightarrow$选中mysql ODBC driver一项</p>
 <ul>
-<li>在HTML中，标签的id属性与class属性的选择器分别使用”#”、”.”来标识；</li>
-<li>id、class属性不要以数字开头，在 Mozilla/Firefox 浏览器中不起作用。<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">假设html中有以下两个标签div、p</span><br><span class="line">&lt;div id="title"&gt;&lt;/div&gt;</span><br><span class="line">&lt;p class='content'&gt;&lt;/p&gt;</span><br><span class="line">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 那么id属性为“title”的div标签选择器为 */</span></span><br><span class="line"><span class="selector-id">#title</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>:red;</span><br><span class="line">	<span class="attribute">text-align</span>:center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 那么class属性为“content”的p标签选择器为 */</span></span><br><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>:red;</span><br><span class="line">	<span class="attribute">text-align</span>:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>data source name 一项填入你要使用的名字，自己随便命名，例如：MySQL；</li>
+<li>description一项随意填写，例如MyWorld；</li>
+<li>TCP/IP Server 填写本机服务器IP，一般为：127.0.0.1；</li>
+<li>user 填写你的mysql用户名；</li>
+<li>password 填写你的mysql密码；</li>
+<li>然后数据库里会出现你的mysql里的所有数据库（我这里选world），选择一个数据库，OK。</li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20151105110304346" alt="这里写图片描述"></p>
+<hr>
+<p><strong>4、使用R连接MySQL</strong></p>
+<ul>
+<li>连接数据库<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载包RODBC</span></span><br><span class="line"><span class="keyword">library</span>(RODBC)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接MySQL数据库</span></span><br><span class="line">channel &lt;- odbcConnect(<span class="string">"MySQL"</span>, uid=<span class="string">"root"</span>, pwd=<span class="string">"root"</span>)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-</li>
-</ol>
 <hr>
-<h1 id="样式表"><a href="#样式表" class="headerlink" title="样式表"></a><strong>样式表</strong></h1><h2 id="外部样式"><a href="#外部样式" class="headerlink" title="外部样式"></a>外部样式</h2><ol>
-<li><strong>外部样式</strong>:是指从外部文件中引入样式，对整个html中相同标签有效；</li>
-<li><strong>用法</strong>:使用 link 标签链接到样式表，属性href的值是css文件地址。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"mystyle.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看数据world中的表<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; sqlTables(channel)</span><br><span class="line">  TABLE_CAT TABLE_SCHEM      TABLE_NAME TABLE_TYPE REMARKS</span><br><span class="line"><span class="number">1</span>     world                        city      TABLE        </span><br><span class="line"><span class="number">2</span>     world                     country      TABLE        </span><br><span class="line"><span class="number">3</span>     world             countrylanguage      TABLE</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<h2 id="内部样式"><a href="#内部样式" class="headerlink" title="内部样式"></a>内部样式</h2><ol>
-<li><strong>内部样式</strong>:是指直接写在html内部css样式，对整个html中相同标签有效；</li>
-<li><strong>用法</strong>:在head标签中插入style标签，style标签里写入css样式。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span><br><span class="line"><span class="selector-tag">hr</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>:sienna;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">	<span class="attribute">margin-left</span>:<span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">	<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"images/back40.gif"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h2><ol>
-<li><strong>内联样式</strong>:是指直接写在标签中的css样式，只对当前样式有效；</li>
-<li><strong>用法</strong>:在相关的标签内使用样式（style）属性。Style 属性可以包含任何 CSS 属性。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"color:sienna;margin-left:20px"</span>&gt;</span>This is a paragraph.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="多重样式"><a href="#多重样式" class="headerlink" title="多重样式"></a>多重样式</h2><ul>
-<li>可以多做样式一起混合使用，需要考虑样式的优先级；</li>
-<li>优先级：内联样式 &gt; 内部样式 &gt; 外部样式。</li>
 </ul>
 <hr>
+<ul>
+<li>查看表city的内容，存到数据框data里<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; data&lt;-sqlFetch(channel,<span class="string">"city"</span>)</span><br><span class="line">&gt; head(data)</span><br><span class="line">  ID           Name CountryCode      District Population</span><br><span class="line"><span class="number">1</span>  <span class="number">1</span>          Kabul         AFG         Kabol    <span class="number">1780000</span></span><br><span class="line"><span class="number">2</span>  <span class="number">2</span>       Qandahar         AFG      Qandahar     <span class="number">237500</span></span><br><span class="line"><span class="number">3</span>  <span class="number">3</span>          Herat         AFG         Herat     <span class="number">186800</span></span><br><span class="line"><span class="number">4</span>  <span class="number">4</span> Mazar-e-Sharif         AFG         Balkh     <span class="number">127800</span></span><br><span class="line"><span class="number">5</span>  <span class="number">5</span>      Amsterdam         NLD Noord-Holland     <span class="number">731200</span></span><br><span class="line"><span class="number">6</span>  <span class="number">6</span>      Rotterdam         NLD  Zuid-Holland     <span class="number">593321</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ul>
+<li>使用SQL语句查询，查询Population大于等于500万的人名，并按ID降序排序<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&gt; sqlQuery(channel,<span class="string">"select ID,Name,Population from city where Population &gt;= 5000000 order by id desc"</span>)</span><br><span class="line">     ID                Name Population</span><br><span class="line"><span class="number">1</span>  <span class="number">3793</span>            New York    <span class="number">8008278</span></span><br><span class="line"><span class="number">2</span>  <span class="number">3580</span>              Moscow    <span class="number">8389200</span></span><br><span class="line"><span class="number">3</span>  <span class="number">3357</span>            Istanbul    <span class="number">8787958</span></span><br><span class="line"><span class="number">4</span>  <span class="number">3320</span>             Bangkok    <span class="number">6320174</span></span><br><span class="line"><span class="number">5</span>  <span class="number">2890</span>                Lima    <span class="number">6464693</span></span><br><span class="line"><span class="number">6</span>  <span class="number">2823</span>              Lahore    <span class="number">5063499</span></span><br><span class="line"><span class="number">7</span>  <span class="number">2822</span>             Karachi    <span class="number">9269265</span></span><br><span class="line"><span class="number">8</span>  <span class="number">2515</span>   Ciudad de M??xico    <span class="number">8591309</span></span><br><span class="line"><span class="number">9</span>  <span class="number">2331</span>               Seoul    <span class="number">9981619</span></span><br><span class="line"><span class="number">10</span> <span class="number">2298</span>            Kinshasa    <span class="number">5064000</span></span><br><span class="line"><span class="number">11</span> <span class="number">2257</span> Santaf?? de Bogot??    <span class="number">6260862</span></span><br><span class="line"><span class="number">12</span> <span class="number">1893</span>             Tianjin    <span class="number">5286800</span></span><br><span class="line"><span class="number">13</span> <span class="number">1892</span>           Chongqing    <span class="number">6351600</span></span><br><span class="line"><span class="number">14</span> <span class="number">1891</span>              Peking    <span class="number">7472000</span></span><br><span class="line"><span class="number">15</span> <span class="number">1890</span>            Shanghai    <span class="number">9696300</span></span><br><span class="line"><span class="number">16</span> <span class="number">1532</span>               Tokyo    <span class="number">7980230</span></span><br><span class="line"><span class="number">17</span> <span class="number">1380</span>             Teheran    <span class="number">6758845</span></span><br><span class="line"><span class="number">18</span> <span class="number">1025</span>               Delhi    <span class="number">7206704</span></span><br><span class="line"><span class="number">19</span> <span class="number">1024</span>     Mumbai (Bombay)   <span class="number">10500000</span></span><br><span class="line"><span class="number">20</span>  <span class="number">939</span>             Jakarta    <span class="number">9604900</span></span><br><span class="line"><span class="number">21</span>  <span class="number">608</span>               Cairo    <span class="number">6789479</span></span><br><span class="line"><span class="number">22</span>  <span class="number">456</span>              London    <span class="number">7285000</span></span><br><span class="line"><span class="number">23</span>  <span class="number">207</span>      Rio de Janeiro    <span class="number">5598953</span></span><br><span class="line"><span class="number">24</span>  <span class="number">206</span>          S??o Paulo    <span class="number">9968485</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ul>
+<li>将数据框iris中的数据保存到数据库的表中</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; head(iris)</span><br><span class="line">  Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span><br><span class="line"><span class="number">1</span>          <span class="number">5.1</span>         <span class="number">3.5</span>          <span class="number">1.4</span>         <span class="number">0.2</span>  setosa</span><br><span class="line"><span class="number">2</span>          <span class="number">4.9</span>         <span class="number">3.0</span>          <span class="number">1.4</span>         <span class="number">0.2</span>  setosa</span><br><span class="line"><span class="number">3</span>          <span class="number">4.7</span>         <span class="number">3.2</span>          <span class="number">1.3</span>         <span class="number">0.2</span>  setosa</span><br><span class="line"><span class="number">4</span>          <span class="number">4.6</span>         <span class="number">3.1</span>          <span class="number">1.5</span>         <span class="number">0.2</span>  setosa</span><br><span class="line"><span class="number">5</span>          <span class="number">5.0</span>         <span class="number">3.6</span>          <span class="number">1.4</span>         <span class="number">0.2</span>  setosa</span><br><span class="line"><span class="number">6</span>          <span class="number">5.4</span>         <span class="number">3.9</span>          <span class="number">1.7</span>         <span class="number">0.4</span>  setosa</span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 由于数据框没有行名，所以保存到数据库中时需要指定一个行名（比如这里是“id”）</span></span><br><span class="line">&gt; sqlSave(channel, iris, rownames = <span class="string">"id"</span>, addPK = <span class="literal">TRUE</span>)</span><br></pre></td></tr></table></figure>
+<p>打开cmd进入到mysql，使用语句</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use world</span><br><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20151105114456338" alt="这里写图片描述"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from iris;</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20151105114906232" alt="这里写图片描述"></p>
+<hr>
+<ul>
+<li>删除数据库中的表iris</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlDrop(channel,<span class="string">"iris"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20151105115415458" alt="这里写图片描述"></p>
+<hr>
+<ul>
+<li>关闭数据库的连接</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">odbcClose(channel)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -392,13 +398,13 @@ CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/06/27/CSS笔记/">CSS笔记</a></p>
+        <p><span>本文标题:</span><a href="/2015/11/05/R-MySQL/">R语言连接MySQL</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Bgods</a></p>
-        <p><span>发布时间:</span>2016-06-27, 08:50:37</p>
-        <p><span>最后更新:</span>2016-09-16, 21:55:49</p>
+        <p><span>发布时间:</span>2015-11-05, 00:00:00</p>
+        <p><span>最后更新:</span>2016-10-09, 09:10:44</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/27/CSS笔记/" title="CSS笔记">http://bgods.top/2016/06/27/CSS笔记/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://bgods.top/2016/06/27/CSS笔记/　　作者: Bgods" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2015/11/05/R-MySQL/" title="R语言连接MySQL">http://bgods.top/2015/11/05/R-MySQL/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://bgods.top/2015/11/05/R-MySQL/　　作者: Bgods" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -411,15 +417,15 @@ CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/06/27/初识Scrapy-实战（一）/">
-                    初识Scrapy-实战（一）
+                <a href="/2016/06/27/CSS笔记/">
+                    CSS笔记
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2015/11/05/R-MySQL/">
-                    R语言连接MySQL
+                <a href="/2015/09/12/爬取马蜂窝/">
+                    使用requests爬取马蜂窝中国旅游热门城市
                 </a>
             </div>
         
@@ -430,7 +436,7 @@ CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS-规则"><span class="toc-number">1.</span> <span class="toc-text">CSS 规则:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS-注释"><span class="toc-number">2.</span> <span class="toc-text">CSS 注释:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选择器"><span class="toc-number">3.</span> <span class="toc-text">选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#样式表"><span class="toc-number">4.</span> <span class="toc-text">样式表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#外部样式"><span class="toc-number">4.1.</span> <span class="toc-text">外部样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内部样式"><span class="toc-number">4.2.</span> <span class="toc-text">内部样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内联样式"><span class="toc-number">4.3.</span> <span class="toc-text">内联样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多重样式"><span class="toc-number">4.4.</span> <span class="toc-text">多重样式</span></a></li></ol></li></ol>
+    
 </div>
 <style>
     .left-col .switch-btn,
@@ -461,7 +467,7 @@ CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"CSS笔记　| Bgods　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"R语言连接MySQL　| Bgods　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -477,7 +483,7 @@ CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/06/27/CSS笔记/" data-title="CSS笔记" data-url="http://bgods.top/2016/06/27/CSS笔记/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2015/11/05/R-MySQL/" data-title="R语言连接MySQL" data-url="http://bgods.top/2015/11/05/R-MySQL/"></div>
     <script>
         var duoshuoQuery = {short_name:"null"};
         var loadComment = function(){
@@ -501,7 +507,7 @@ CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/06/27/初识Scrapy-实战（一）/" title="上一篇: 初识Scrapy-实战（一）">
+            <a href="/2016/06/27/CSS笔记/" title="上一篇: CSS笔记">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -509,7 +515,7 @@ CSS声明总是以分号(;)结束，声明组以大括号({})括起来.">
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2015/11/05/R-MySQL/" title="下一篇: R语言连接MySQL">
+            <a href="/2015/09/12/爬取马蜂窝/" title="下一篇: 使用requests爬取马蜂窝中国旅游热门城市">
                 <i class="fa fa-angle-right"></i>
             </a>
         
